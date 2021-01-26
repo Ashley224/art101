@@ -1,7 +1,7 @@
 
 body {
   margin: 10px;
-  background-color: #f6ffe0;
+  background-color: #0B0B0E;
   font-family: "Courier New", monospace;
   font-size: 120%;
 }
@@ -9,13 +9,13 @@ h1 {
   color: black;
 }
 p {
-  color: #6A508F;
+  color: #817CA6;
 }
 #content, #menu {
   margin: 20px;
   padding: 20px;
   border: 1px black;
-  background-color: #869562;
+  background-color: #504D66;
 }
 
 #content h1,
@@ -55,6 +55,7 @@ p {
 }
 .caption {
       text-align: center;
+      color: #958FBF
 }
 figure {
     display: inline-block;
@@ -63,6 +64,7 @@ figure {
 }
 figure img {
     vertical-align: text-top;
+    float: center;
 }
 figure figcaption {
     border: 1px dotted blue;
