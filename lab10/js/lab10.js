@@ -31,4 +31,3 @@ button.addEventListener("click", function () {
   outputEl.appendChild(new1El);
   console.log("result =", sortUserName(inputValue));
 });
-
