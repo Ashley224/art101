@@ -3,7 +3,7 @@
  * Created: 17 February
  * License: Public Domain
  */
-
+ 
 $("#challenge").append("<button id=cb>challenge");
 
 $("#problem").append("<button id=pb>problem");
@@ -30,6 +30,3 @@ $("#rb").click(function () {
   $("#cb").css("color", "yellow");
   $("#rb").css("color", "black");
 });
-
-
-
