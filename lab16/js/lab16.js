@@ -4,30 +4,64 @@
  * License: Public Domain
  */
 
-// Using the core $.ajax() method
-$.ajax({
-    // The URL for the request (from the api docs)
-    url: "https://xkcd.com/614/info.0.json",
-    // The data to send (will be converted to a query string)
-    data: { 
-            // here is where any data required by the api 
-            //   goes (check the api docs)
-            id: 614,
-            api_key: "blahblahblah",
-          },
-    // Whether this is a POST or GET request
+var issueNum = 1;
+var refresh = document.getElementById("refresh");
+var next = document.getElementById("next");
+var prev = document.getElementById("prev");
+var comicObj = {};
+
+refresh.addEventListener("click", function () {
+  getComic();
+});
+
+next.addEventListener("click", function () {
+  getNext();
+});
+
+prev.addEventListener("click", function () {
+  getPrev();
+});
+
+function output(output) {
+  console.log("outputing: " + output);
+  $("#output").html(output);
+}
+
+function getComic() {
+  var url = "https://xkcd.com/" + issueNum + "/info.0.json";
+  console.log(url);
+  $.ajax({
     type: "GET",
-    // The type of data we expect back
-    dataType : "json",
-    // What do we do when the api call is successful
-    //   all the action goes in here
-    success: function(data) {
-        // do stuff
-        console.log(data);
+    url: url,
+    success: function (data) {
+      console.log(data);
+      comicObj = data;
+      var comicFomatted = `<h3>${comicObj.title}</h3><img src=${comicObj.img} alt="${comicObj.alt}" title="${comicObj.alt}">`;
+      output(comicFomatted);
     },
-    // What we do if the api call fails
-    error: function (jqXHR, textStatus, errorThrown) { 
-        // do stuff
-        console.log("Error:", textStatus, errorThrown);
-    }
-})
+    error: function () {
+      console.log("Fail Loading API");
+      output("Fail to load API");
+    },
+  });
+}
+
+function getPrev() {
+  console.log("current issueNum: " + issueNum);
+  if (issueNum == 1) {
+    console.log("You reach to the end of the comics");
+    output(
+      "You reach to the end of the comics. Refresh to view the first comic"
+    );
+  } else {
+    issueNum = issueNum - 1;
+    console.log("Get prv" + issueNum);
+    getComic();
+  }
+}
+
+function getNext() {
+  issueNum = issueNum + 1;
+  console.log("Get next" + issueNum);
+  getComic();
+}
