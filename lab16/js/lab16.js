@@ -1,11 +1,9 @@
 /*
  * Author: Ashley Mojica <asmojica@ucsc.edu>
- * Created: 3 March
+ * Created: 8 March
  * License: Public Domain
  */
- 
-var requestButton = document.getElementById("activate");
-var output = document.getElementById("output");
+
 // Using the core $.ajax() method
 $.ajax({
     // The URL for the request (from the api docs)
